@@ -1,0 +1,18 @@
+version: "2"
+services:
+    redis:
+        image: redis:latest
+        restart: always
+        volumes: 
+            - ./data/redis:/data
+    mu:
+        build: .
+        restart: always
+        depends_on: 
+            - redis
+        links: 
+            - redis
+        ports: 
+            - "1025-1050:1025-1050"
+        volumes: 
+            - ./data:/go
