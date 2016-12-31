@@ -1,0 +1,6 @@
+/data/initdb/*
+/data/mysql/*
+/data/nginx/*
+/data/redis/*
+/data/ss-panel/*
+!/data/nginx/ss-panel.conf

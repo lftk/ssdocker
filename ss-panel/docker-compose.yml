@@ -1,0 +1,37 @@
+version: "2"
+services:
+    mysql:
+        image: mysql:latest
+        restart: always
+        volumes: 
+            - ./data/mysql:/var/lib/mysql
+            - ./data/initdb:/docker-entrypoint-initdb.d
+        environment:
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+            MYSQL_DATABASE: "sspanel"
+            MYSQL_USER: "sspanel"
+            MYSQL_PASSWORD: "sspanel"
+    redis:
+        image: redis:latest
+        restart: always
+        volumes: 
+            - ./data/redis:/data
+    nginx:
+        image: nginx:latest
+        restart: always
+        depends_on: 
+            - ss-panel
+        volumes_from: 
+            - ss-panel
+        volumes: 
+            - ./data/nginx:/etc/nginx/conf.d
+        ports: 
+            - "1024:80"
+    ss-panel:
+        build: .
+        restart: always
+        depends_on: 
+            - mysql
+            - redis
+        volumes: 
+            - ./data/ss-panel:/var/www/html
