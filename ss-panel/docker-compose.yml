@@ -23,6 +23,8 @@ services:
             - ss-panel
         volumes_from: 
             - ss-panel
+        links: 
+            - ss-panel
         volumes: 
             - ./data/nginx:/etc/nginx/conf.d
         ports: 
@@ -31,6 +33,9 @@ services:
         build: .
         restart: always
         depends_on: 
+            - mysql
+            - redis
+        links: 
             - mysql
             - redis
         volumes: 
