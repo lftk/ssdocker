@@ -15,4 +15,4 @@ services:
         ports: 
             - "1025-1050:1025-1050"
         volumes: 
-            - ./data:/go
+            - ./data/go:/go

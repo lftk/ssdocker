@@ -6,6 +6,7 @@ __init() {
     git clone https://github.com/orvice/ss-panel.git .
     curl -sS https://getcomposer.org/installer | php 
     php composer.phar install
+    chmod -R 777 storage
 
     cp .env.example .env
     sed -i -e "s/'md5'/'sha256'/g" .env
