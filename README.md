@@ -14,7 +14,7 @@
 
 **ss-panel v3.4.2**
 
-#### 参考文档
+### 参考文档
 
 - [ss-panel 原生安装文档][5]
 - [shadowsocks-go mu 原生安装文档][6]
